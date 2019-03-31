@@ -4,7 +4,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.minderest.user.adapter.repository.Seeder;
+import com.minderest.user.application.CreateUser;
 import com.minderest.user.application.FindUser;
+import com.minderest.user.application.LoginUser;
 
 @Configuration
 public class ConfigurationApplication {
@@ -14,6 +16,16 @@ public class ConfigurationApplication {
     @Bean
     public FindUser findUser() {
 	return config.findUser();
+    }
+
+    @Bean
+    public CreateUser createUser() {
+	return config.createUser();
+    }
+
+    @Bean
+    public LoginUser loginUser() {
+	return config.loginUser();
     }
 
     @Bean

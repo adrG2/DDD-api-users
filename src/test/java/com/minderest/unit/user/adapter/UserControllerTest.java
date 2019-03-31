@@ -53,7 +53,9 @@ public class UserControllerTest {
 
     @Test(expected = UserNotFoundException.class)
     public void testFindUserUserNotFoundException() {
+
 	when(findUser.findById(anyString())).thenThrow(UserNotFoundException.class);
+
 	controller.getUser("2");
     }
 
@@ -63,6 +65,11 @@ public class UserControllerTest {
 
 	assertNotNull(result);
 	assertEquals(user.getFirstName(), result.getFirstName());
+    }
+
+    @Test
+    public void testFindAllUsers() {
+	controller.getAllUsers();
     }
 
 }

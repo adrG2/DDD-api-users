@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.minderest.user.adapter.controller.model.UserRest;
 import com.minderest.user.application.CreateUser;
 import com.minderest.user.application.FindUser;
+import com.minderest.user.application.LoginUser;
 import com.minderest.user.domain.User;
 import com.minderest.user.domain.exception.UserNotFoundException;
 
@@ -22,11 +24,13 @@ public final class UserController {
 
     private FindUser findUser;
     private CreateUser createUser;
+    private LoginUser loginUser;
 
     @Autowired
-    public UserController(final FindUser findUser, final CreateUser createUser) {
+    public UserController(final FindUser findUser, final CreateUser createUser, final LoginUser loginUser) {
 	this.findUser = findUser;
 	this.createUser = createUser;
+	this.loginUser = loginUser;
     }
 
     @GetMapping(value = "/users/{userId}")
@@ -36,7 +40,7 @@ public final class UserController {
     }
 
     @GetMapping(value = "/users")
-    public List<UserRest> allUsers() {
+    public List<UserRest> getAllUsers() {
 	return findUser.findAllUsers().stream().map(UserRest::toUserRest).collect(Collectors.toList());
     }
 
@@ -45,5 +49,10 @@ public final class UserController {
 	User user = userRest.toUser();
 	createUser.push(user);
 	return UserRest.toUserRest(user);
+    }
+
+    @GetMapping(value = "/login")
+    public UserRest login(@RequestParam("email") final String email, @RequestParam("password") final String password) {
+	return UserRest.toUserRest(loginUser.login(email, password));
     }
 }
