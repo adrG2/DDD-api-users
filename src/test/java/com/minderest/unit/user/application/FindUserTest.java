@@ -21,7 +21,7 @@ import com.minderest.user.domain.exception.UserNotFoundException;
 import com.minderest.user.domain.port.UserRepository;
 
 @RunWith(MockitoJUnitRunner.class)
-public class findUserTest {
+public class FindUserTest {
 
     @InjectMocks
     private FindUser findUser;

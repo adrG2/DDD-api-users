@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.minderest.user.adapter.controller.model.LoginUserRest;
 import com.minderest.user.adapter.controller.model.UserRest;
 import com.minderest.user.application.CreateUser;
 import com.minderest.user.application.FindUser;
@@ -51,8 +51,9 @@ public final class UserController {
 	return UserRest.toUserRest(user);
     }
 
-    @GetMapping(value = "/login")
-    public UserRest login(@RequestParam("email") final String email, @RequestParam("password") final String password) {
-	return UserRest.toUserRest(loginUser.login(email, password));
+    @PostMapping(value = "/login")
+    @ResponseBody
+    public UserRest login(@RequestBody final LoginUserRest loginUserRest) {
+	return UserRest.toUserRest(loginUser.login(loginUserRest));
     }
 }

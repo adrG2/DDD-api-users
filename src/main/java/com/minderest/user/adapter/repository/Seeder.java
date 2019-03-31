@@ -21,7 +21,7 @@ public class Seeder {
 
     private void seedUsersTable() {
 	User user = User.builder().id("1").firstName("Antonio").lastName("Fernandez").email("anfer@gmail.com")
-		.nickName("anfer90").build();
+		.nickName("anfer90").password("1234").build();
 	repository.save(user);
     }
 }

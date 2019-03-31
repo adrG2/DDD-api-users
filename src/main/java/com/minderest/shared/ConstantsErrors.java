@@ -8,6 +8,7 @@ public final class ConstantsErrors {
     public static final String USER_NOT_VALIDATE = "Usuario no valido";
     public static final String USER_NULL = "El usuario es null";
     public static final String FORBIDDEN_LOGGED = "No se ha podido verificar la identidad del usuario";
+    public static final String BAD_PARAMS = "Los parametros de entrada no son validos";
 
     private ConstantsErrors() {
 	throw new AssertionError(ConstantsErrors.NOT_ALLOWED_INSTANTIATE);
