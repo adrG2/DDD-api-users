@@ -1,2 +1,2 @@
-# Api example DDD Pattern
+# Sample API DDD pattern
 
