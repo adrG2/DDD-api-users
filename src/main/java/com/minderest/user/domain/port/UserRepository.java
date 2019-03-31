@@ -1,7 +1,9 @@
-package com.minderest.user.domain;
+package com.minderest.user.domain.port;
 
 import java.util.List;
 import java.util.Optional;
+
+import com.minderest.user.domain.User;
 
 public interface UserRepository {
 

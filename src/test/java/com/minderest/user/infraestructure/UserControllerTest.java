@@ -14,11 +14,11 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import com.minderest.user.UserFields;
+import com.minderest.user.adapter.controller.UserController;
+import com.minderest.user.adapter.controller.model.UserResponse;
 import com.minderest.user.application.FindUser;
 import com.minderest.user.domain.User;
 import com.minderest.user.domain.exception.UserNotFoundException;
-import com.minderest.user.infrastructure.controller.UserController;
-import com.minderest.user.infrastructure.controller.model.UserResponse;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserControllerTest {

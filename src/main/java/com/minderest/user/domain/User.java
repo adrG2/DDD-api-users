@@ -6,15 +6,25 @@ public class User {
 	private String id;
 	private String firstName;
 	private String lastName;
-	private String nickName;
 	private String email;
 	private String password;
+	private String nickName;
 
 	UserBuilder() {
 	}
 
 	public UserBuilder id(final String id) {
 	    this.id = id;
+	    return this;
+	}
+
+	public UserBuilder firstName(final String firstName) {
+	    this.firstName = firstName;
+	    return this;
+	}
+
+	public UserBuilder lastName(final String lastName) {
+	    this.lastName = lastName;
 	    return this;
 	}
 
@@ -25,16 +35,6 @@ public class User {
 
 	public UserBuilder password(final String password) {
 	    this.password = password;
-	    return this;
-	}
-
-	public UserBuilder lastName(final String lastName) {
-	    this.lastName = lastName;
-	    return this;
-	}
-
-	public UserBuilder firstName(final String firstName) {
-	    this.firstName = firstName;
 	    return this;
 	}
 

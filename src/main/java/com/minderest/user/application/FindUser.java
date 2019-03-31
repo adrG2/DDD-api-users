@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.minderest.user.domain.User;
-import com.minderest.user.domain.UserRepository;
+import com.minderest.user.domain.port.UserRepository;
 
 public class FindUser {
 

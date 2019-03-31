@@ -1,4 +1,4 @@
-package com.minderest.user.infrastructure.repository;
+package com.minderest.user.adapter.repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 import com.minderest.user.domain.User;
-import com.minderest.user.domain.UserRepository;
+import com.minderest.user.domain.port.UserRepository;
 
 public final class DatabaseMemory implements UserRepository {
 

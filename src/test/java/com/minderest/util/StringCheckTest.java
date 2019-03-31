@@ -22,9 +22,4 @@ public class StringCheckTest {
 	assertFalse(StringCheck.isBlankAnyArgument("h", "hola"));
     }
 
-    @Test(expected = AssertionError.class)
-    public void testValidatorStringInstantiateError() {
-	new StringCheck();
-    }
-
 }

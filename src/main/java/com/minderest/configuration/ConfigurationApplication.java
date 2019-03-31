@@ -3,8 +3,8 @@ package com.minderest.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.minderest.user.adapter.repository.Seeder;
 import com.minderest.user.application.FindUser;
-import com.minderest.user.infrastructure.repository.Seeder;
 
 @Configuration
 public class ConfigurationApplication {
