@@ -20,4 +20,11 @@ public class NestedNullCheckTest {
 	assertEquals(Optional.of("1"), NestedNullCheck.resolve(() -> user.getId()));
     }
 
+    @Test
+    public void testResolveNull() {
+
+	User user = null;
+	assertEquals(Optional.empty(), NestedNullCheck.resolve(() -> user.getLastName()));
+    }
+
 }

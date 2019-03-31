@@ -14,6 +14,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import com.minderest.user.domain.User;
+import com.minderest.user.domain.exception.UserNotFoundException;
 import com.minderest.user.domain.port.UserRepository;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -32,8 +33,9 @@ public class findUserTest {
 	assertNotNull(result);
     }
 
-    @Test
+    @Test(expected = UserNotFoundException.class)
     public void testFindUserNotFoundException() {
+	when(userRepository.findById(Mockito.anyString())).thenThrow(UserNotFoundException.class);
 	findUser.findById("2");
     }
 

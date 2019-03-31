@@ -18,19 +18,23 @@ public class CreateUser {
 	this.idGenerate = idGenerate;
     }
 
-    public void save(final User user) {
+    public void push(final User user) {
 	UserValidator.validate(user);
 
 	String email = user.getEmail();
 
-	repository.findByEmail(email).ifPresent(userExists -> {
-	    throw new UserExistsException(email);
-	});
+	checkIfUserExists(email);
 
 	User userToSave = User.builder().id(idGenerate.generate()).firstName(user.getFirstName())
 		.lastName(user.getLastName()).email(email).password(passwordEncoder.encode(email + user.getPassword()))
 		.nickName(user.getNickName()).build();
 	repository.save(userToSave);
+    }
+
+    private void checkIfUserExists(String email) {
+	repository.findByEmail(email).ifPresent(userExists -> {
+	    throw new UserExistsException(email);
+	});
     }
 
 }

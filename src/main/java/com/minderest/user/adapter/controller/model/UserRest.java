@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.minderest.user.domain.User;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UserResponse {
+public class UserRest {
     private String id;
     private String email;
     private String password;
@@ -64,8 +64,8 @@ public class UserResponse {
 	return User.builder().id(id).firstName(firstName).lastName(lastName).email(email).nickName(nickName).build();
     }
 
-    public static UserResponse toUserResponse(final User user) {
-	UserResponse userResponse = new UserResponse();
+    public static UserRest toUserRest(final User user) {
+	UserRest userResponse = new UserRest();
 	userResponse.setId(user.getId());
 	userResponse.setEmail(user.getEmail());
 	userResponse.setLastName(user.getLastName());

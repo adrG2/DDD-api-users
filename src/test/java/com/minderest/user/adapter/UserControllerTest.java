@@ -1,4 +1,4 @@
-package com.minderest.user.infraestructure;
+package com.minderest.user.adapter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -15,7 +15,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.minderest.user.UserFields;
 import com.minderest.user.adapter.controller.UserController;
-import com.minderest.user.adapter.controller.model.UserResponse;
+import com.minderest.user.adapter.controller.model.UserRest;
+import com.minderest.user.application.CreateUser;
 import com.minderest.user.application.FindUser;
 import com.minderest.user.domain.User;
 import com.minderest.user.domain.exception.UserNotFoundException;
@@ -29,15 +30,21 @@ public class UserControllerTest {
     @Mock
     private FindUser findUser;
 
+    @Mock
+    private CreateUser createUser;
+
+    private static final User user = User.builder().id("1").firstName(UserFields.FIRST_NAME)
+	    .lastName(UserFields.LAST_NAME).email(UserFields.EMAIL).nickName(UserFields.NICK_NAME).build();
+
+    private static final UserRest userRest = UserRest.toUserRest(user);
+
     @Test
     public void testFindUser() {
-	User user = User.builder().id("1").firstName(UserFields.FIRST_NAME).lastName(UserFields.LAST_NAME).email(UserFields.EMAIL).nickName(UserFields.NICK_NAME)
-		.build();
 	Optional<User> userOpt = Optional.of(user);
 
 	when(findUser.findById(anyString())).thenReturn(userOpt);
 
-	UserResponse response = controller.getUser("1");
+	UserRest response = controller.getUser("1");
 
 	assertNotNull(response);
 	assertEquals(UserFields.FIRST_NAME, response.getFirstName());
@@ -48,6 +55,14 @@ public class UserControllerTest {
     public void testFindUserUserNotFoundException() {
 	when(findUser.findById(anyString())).thenThrow(UserNotFoundException.class);
 	controller.getUser("2");
+    }
+
+    @Test
+    public void testCreateUser() {
+	UserRest result = controller.createUser(userRest);
+
+	assertNotNull(result);
+	assertEquals(user.getFirstName(), result.getFirstName());
     }
 
 }
