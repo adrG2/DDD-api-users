@@ -1,4 +1,4 @@
-package com.minderest.api.infrastructure.database;
+package com.minderest.user.infrastructure.repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,10 +7,10 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import com.minderest.api.domain.User;
-import com.minderest.api.domain.UserRepository;
+import com.minderest.user.domain.User;
+import com.minderest.user.domain.UserRepository;
 
-public class DatabaseMemory implements UserRepository {
+public final class DatabaseMemory implements UserRepository {
 
     private final Map<String, User> db = new HashMap<>();
 
@@ -20,9 +20,8 @@ public class DatabaseMemory implements UserRepository {
     }
 
     @Override
-    public User create(final User user) {
+    public void save(final User user) {
 	db.put(user.getId(), user);
-	return user;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.minderest.api.domain;
+package com.minderest.user.domain;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,7 +7,7 @@ public interface UserRepository {
 
     Optional<User> findById(String id);
 
-    User create(User user);
+    void save(User user);
 
     Optional<User> findByEmail(String email);
 

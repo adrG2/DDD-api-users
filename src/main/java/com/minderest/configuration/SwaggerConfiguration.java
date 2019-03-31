@@ -1,4 +1,4 @@
-package com.minderest.api.configuration;
+package com.minderest.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

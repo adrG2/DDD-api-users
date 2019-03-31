@@ -1,9 +1,9 @@
-package com.minderest.api.shared.util;
+package com.minderest.shared.util;
 
 import java.util.Optional;
 import java.util.function.Supplier;
 
-import com.minderest.api.shared.core.InstantiateForbidden;
+import com.minderest.shared.core.InstantiateForbidden;
 
 public final class NestedNullCheck extends InstantiateForbidden {
 

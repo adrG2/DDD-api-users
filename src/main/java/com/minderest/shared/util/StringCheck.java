@@ -1,10 +1,10 @@
-package com.minderest.api.shared.util;
+package com.minderest.shared.util;
 
 import java.util.Arrays;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.minderest.api.shared.core.InstantiateForbidden;
+import com.minderest.shared.core.InstantiateForbidden;
 
 public final class StringCheck extends InstantiateForbidden {
 

@@ -1,6 +1,6 @@
-package com.minderest.api.shared.core;
+package com.minderest.shared.core;
 
-import com.minderest.api.shared.ConstantsErrors;
+import com.minderest.shared.ConstantsErrors;
 
 public class InstantiateForbidden {
     public InstantiateForbidden() {

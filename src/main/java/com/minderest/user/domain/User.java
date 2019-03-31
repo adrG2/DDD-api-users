@@ -1,4 +1,4 @@
-package com.minderest.api.domain;
+package com.minderest.user.domain;
 
 public class User {
 
@@ -44,7 +44,7 @@ public class User {
 	}
 
 	public User build() {
-	    return new User(id, email, password, lastName, firstName, nickName);
+	    return new User(id, firstName, lastName, email, password, nickName);
 	}
     }
 

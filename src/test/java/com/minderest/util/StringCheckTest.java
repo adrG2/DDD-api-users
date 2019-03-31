@@ -1,4 +1,4 @@
-package com.minderest.api.util;
+package com.minderest.util;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.minderest.api.shared.util.StringCheck;
+import com.minderest.shared.util.StringCheck;
 
 @RunWith(MockitoJUnitRunner.class)
 public class StringCheckTest {
