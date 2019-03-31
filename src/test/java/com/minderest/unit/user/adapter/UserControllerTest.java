@@ -1,4 +1,4 @@
-package com.minderest.user.adapter;
+package com.minderest.unit.user.adapter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

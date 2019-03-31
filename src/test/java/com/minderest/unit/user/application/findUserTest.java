@@ -1,9 +1,11 @@
-package com.minderest.user.application;
+package com.minderest.unit.user.application;
 
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.Test;
@@ -13,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import com.minderest.user.application.FindUser;
 import com.minderest.user.domain.User;
 import com.minderest.user.domain.exception.UserNotFoundException;
 import com.minderest.user.domain.port.UserRepository;
@@ -37,6 +40,13 @@ public class findUserTest {
     public void testFindUserNotFoundException() {
 	when(userRepository.findById(Mockito.anyString())).thenThrow(UserNotFoundException.class);
 	findUser.findById("2");
+    }
+
+    @Test
+    public void testFindUsers() {
+	List<User> users = new ArrayList<>();
+	when(userRepository.findAllUsers()).thenReturn(users);
+	findUser.findAllUsers();
     }
 
 }

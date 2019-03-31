@@ -1,4 +1,4 @@
-package com.minderest.user.application;
+package com.minderest.unit.user.application;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import com.minderest.user.UserFields;
+import com.minderest.user.application.CreateUser;
 import com.minderest.user.domain.User;
 import com.minderest.user.domain.exception.UserExistsException;
 import com.minderest.user.domain.exception.UserValidationException;
@@ -35,10 +36,11 @@ public class CreateUserTest {
     @Mock
     private final IdGenerate idGenerate = mock(IdGenerate.class);
 
+    private static final User user = User.builder().id("1").firstName(UserFields.FIRST_NAME)
+	    .lastName(UserFields.LAST_NAME).email(UserFields.EMAIL).nickName(UserFields.NICK_NAME).build();
+
     @Test
     public void testPushUser() {
-	User user = User.builder().id("1").firstName(UserFields.FIRST_NAME).lastName(UserFields.LAST_NAME)
-		.email(UserFields.EMAIL).nickName(UserFields.NICK_NAME).build();
 
 	when(userRepository.findByEmail(anyString())).thenReturn(Optional.empty());
 
@@ -51,10 +53,8 @@ public class CreateUserTest {
 
     @Test(expected = UserExistsException.class)
     public void testPushUserAlreadyExists() {
-	User user = User.builder().id("1").firstName(UserFields.FIRST_NAME).lastName(UserFields.LAST_NAME)
-		.email(UserFields.EMAIL).nickName(UserFields.NICK_NAME).build();
 
-	when(userRepository.findByEmail(anyString())).thenThrow(UserExistsException.class);
+	when(userRepository.findByEmail(anyString())).thenReturn(Optional.of(user));
 
 	createUser.push(user);
     }
