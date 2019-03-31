@@ -18,20 +18,20 @@ import com.minderest.user.application.SaveUser;
 import com.minderest.user.application.SearchUser;
 import com.minderest.user.domain.User;
 import com.minderest.user.domain.exception.UserNotFoundException;
-import com.minderest.user.infrastructure.controller.UserController;
+import com.minderest.user.infrastructure.controller.Controller;
 import com.minderest.user.infrastructure.controller.model.UserRest;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserControllerTest {
 
     @InjectMocks
-    private UserController controller;
+    private Controller controller;
 
     @Mock
-    private SearchUser findUser;
+    private SearchUser searchUser;
 
     @Mock
-    private SaveUser createUser;
+    private SaveUser saveUser;
 
     private static final User user = User.builder().id("1").firstName(UserFields.FIRST_NAME)
 	    .lastName(UserFields.LAST_NAME).email(UserFields.EMAIL).nickName(UserFields.NICK_NAME).build();
@@ -39,10 +39,10 @@ public class UserControllerTest {
     private static final UserRest userRest = UserRest.toUserRest(user);
 
     @Test
-    public void testFindUser() {
+    public void testsearchUser() {
 	Optional<User> userOpt = Optional.of(user);
 
-	when(findUser.findById(anyString())).thenReturn(userOpt);
+	when(searchUser.findById(anyString())).thenReturn(userOpt);
 
 	UserRest response = controller.getUser("1");
 
@@ -52,15 +52,15 @@ public class UserControllerTest {
     }
 
     @Test(expected = UserNotFoundException.class)
-    public void testFindUserUserNotFoundException() {
+    public void testsearchUserUserNotFoundException() {
 
-	when(findUser.findById(anyString())).thenThrow(UserNotFoundException.class);
+	when(searchUser.findById(anyString())).thenThrow(UserNotFoundException.class);
 
 	controller.getUser("2");
     }
 
     @Test
-    public void testCreateUser() {
+    public void testsaveUser() {
 	UserRest result = controller.createUser(userRest);
 
 	assertNotNull(result);

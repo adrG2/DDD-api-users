@@ -2,56 +2,6 @@ package com.minderest.user.domain;
 
 public class User {
 
-    public static class UserBuilder {
-	private String id;
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String password;
-	private String nickName;
-
-	UserBuilder() {
-	}
-
-	public UserBuilder id(final String id) {
-	    this.id = id;
-	    return this;
-	}
-
-	public UserBuilder firstName(final String firstName) {
-	    this.firstName = firstName;
-	    return this;
-	}
-
-	public UserBuilder lastName(final String lastName) {
-	    this.lastName = lastName;
-	    return this;
-	}
-
-	public UserBuilder email(final String email) {
-	    this.email = email;
-	    return this;
-	}
-
-	public UserBuilder password(final String password) {
-	    this.password = password;
-	    return this;
-	}
-
-	public UserBuilder nickName(final String nickName) {
-	    this.nickName = nickName;
-	    return this;
-	}
-
-	public User build() {
-	    return new User(id, firstName, lastName, email, password, nickName);
-	}
-    }
-
-    public static UserBuilder builder() {
-	return new UserBuilder();
-    }
-
     private String id;
     private String firstName;
     private String lastName;
@@ -115,6 +65,56 @@ public class User {
 
     public void setNickName(String nickName) {
 	this.nickName = nickName;
+    }
+
+    public static class UserDomainBuilder {
+	private String id;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String password;
+	private String nickName;
+
+	UserDomainBuilder() {
+	}
+
+	public UserDomainBuilder id(final String id) {
+	    this.id = id;
+	    return this;
+	}
+
+	public UserDomainBuilder firstName(final String firstName) {
+	    this.firstName = firstName;
+	    return this;
+	}
+
+	public UserDomainBuilder lastName(final String lastName) {
+	    this.lastName = lastName;
+	    return this;
+	}
+
+	public UserDomainBuilder email(final String email) {
+	    this.email = email;
+	    return this;
+	}
+
+	public UserDomainBuilder password(final String password) {
+	    this.password = password;
+	    return this;
+	}
+
+	public UserDomainBuilder nickName(final String nickName) {
+	    this.nickName = nickName;
+	    return this;
+	}
+
+	public User build() {
+	    return new User(id, firstName, lastName, email, password, nickName);
+	}
+    }
+
+    public static UserDomainBuilder builder() {
+	return new UserDomainBuilder();
     }
 
 }

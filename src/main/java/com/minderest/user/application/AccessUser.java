@@ -3,16 +3,16 @@ package com.minderest.user.application;
 import com.minderest.shared.util.StringCheck;
 import com.minderest.user.domain.PasswordEncoder;
 import com.minderest.user.domain.User;
-import com.minderest.user.domain.UserRepository;
+import com.minderest.user.domain.UserRepositoryDomainInterface;
 import com.minderest.user.domain.exception.ForbiddenException;
 import com.minderest.user.domain.exception.UserLoginBadParamsException;
 import com.minderest.user.infrastructure.controller.model.LoginUserRest;
 
 public class AccessUser {
-    private final UserRepository userRepository;
+    private final UserRepositoryDomainInterface userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public AccessUser(final UserRepository userRepository, final PasswordEncoder passwordEncoder) {
+    public AccessUser(final UserRepositoryDomainInterface userRepository, final PasswordEncoder passwordEncoder) {
 	this.userRepository = userRepository;
 	this.passwordEncoder = passwordEncoder;
     }
@@ -26,8 +26,9 @@ public class AccessUser {
 	User user = userRepository.findByEmail(email).orElseThrow(ForbiddenException::new);
 	String hashedPassword = endocePassword(email, password);
 
-	if (checkPassword(user, hashedPassword))
+	if (checkPassword(password, hashedPassword))
 	    throw new ForbiddenException("Error autenticacion");
+
 	return user;
     }
 
@@ -41,7 +42,7 @@ public class AccessUser {
 	return passwordEncoder.encode(email + password);
     }
 
-    private boolean checkPassword(User user, String hashedPassword) {
-	return !user.getPassword().equals(hashedPassword);
+    private boolean checkPassword(String password, String hashedPassword) {
+	return !password.equals(hashedPassword);
     }
 }

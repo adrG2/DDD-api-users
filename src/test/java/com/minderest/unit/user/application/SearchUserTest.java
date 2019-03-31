@@ -17,36 +17,36 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.minderest.user.application.SearchUser;
 import com.minderest.user.domain.User;
-import com.minderest.user.domain.UserRepository;
+import com.minderest.user.domain.UserRepositoryDomainInterface;
 import com.minderest.user.domain.exception.UserNotFoundException;
 
 @RunWith(MockitoJUnitRunner.class)
-public class FindUserTest {
+public class SearchUserTest {
 
     @InjectMocks
-    private SearchUser findUser;
+    private SearchUser searchUser;
 
     @Mock
-    UserRepository userRepository;
+    UserRepositoryDomainInterface userRepository;
 
     @Test
-    public void testFindUser() {
+    public void testsearchUser() {
 	when(userRepository.findById(Mockito.anyString())).thenReturn(Optional.of(mock(User.class)));
-	Optional<User> result = findUser.findById("1");
+	Optional<User> result = searchUser.findById("1");
 	assertNotNull(result);
     }
 
     @Test(expected = UserNotFoundException.class)
-    public void testFindUserNotFoundException() {
+    public void testsearchUserNotFoundException() {
 	when(userRepository.findById(Mockito.anyString())).thenThrow(UserNotFoundException.class);
-	findUser.findById("2");
+	searchUser.findById("2");
     }
 
     @Test
-    public void testFindUsers() {
+    public void testsearchUsers() {
 	List<User> users = new ArrayList<>();
 	when(userRepository.findAllUsers()).thenReturn(users);
-	findUser.findAllUsers();
+	searchUser.findAllUsers();
     }
 
 }

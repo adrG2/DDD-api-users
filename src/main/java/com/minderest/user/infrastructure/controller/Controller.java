@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.minderest.user.application.SaveUser;
 import com.minderest.user.application.AccessUser;
+import com.minderest.user.application.SaveUser;
 import com.minderest.user.application.SearchUser;
 import com.minderest.user.domain.User;
 import com.minderest.user.domain.exception.UserNotFoundException;
@@ -20,20 +20,20 @@ import com.minderest.user.infrastructure.controller.model.LoginUserRest;
 import com.minderest.user.infrastructure.controller.model.UserRest;
 
 @RestController
-public final class UserController {
+public final class Controller {
 
     private SearchUser searchUser;
-    private SaveUser createUser;
-    private AccessUser loginUser;
+    private SaveUser saveUser;
+    private AccessUser accessUser;
 
     @Autowired
-    public UserController(final SearchUser searchUser, final SaveUser createUser, final AccessUser loginUser) {
+    public Controller(final SearchUser searchUser, final SaveUser createUser, final AccessUser loginUser) {
 	this.searchUser = searchUser;
-	this.createUser = createUser;
-	this.loginUser = loginUser;
+	this.saveUser = createUser;
+	this.accessUser = loginUser;
     }
 
-    @GetMapping(value = "/users/{userId}")
+    @GetMapping(value = "/user/{userId}")
     @ResponseBody
     public UserRest getUser(@PathVariable("userId") final String userId) {
 	return UserRest.toUserRest(searchUser.findById(userId).orElseThrow(UserNotFoundException::new));
@@ -44,16 +44,16 @@ public final class UserController {
 	return searchUser.findAllUsers().stream().map(UserRest::toUserRest).collect(Collectors.toList());
     }
 
-    @PostMapping(value = "/users")
+    @PostMapping(value = "/user")
     public UserRest createUser(@RequestBody final UserRest userRest) {
 	User user = userRest.toUser();
-	createUser.push(user);
+	saveUser.push(user);
 	return UserRest.toUserRest(user);
     }
 
     @PostMapping(value = "/login")
     @ResponseBody
     public UserRest login(@RequestBody final LoginUserRest loginUserRest) {
-	return UserRest.toUserRest(loginUser.login(loginUserRest));
+	return UserRest.toUserRest(accessUser.login(loginUserRest));
     }
 }

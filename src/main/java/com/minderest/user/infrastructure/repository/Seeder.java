@@ -4,13 +4,13 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 
 import com.minderest.user.domain.User;
-import com.minderest.user.domain.UserRepository;
+import com.minderest.user.domain.UserRepositoryDomainInterface;
 
 public class Seeder {
 
-    private UserRepository repository;
+    private UserRepositoryDomainInterface repository;
 
-    public Seeder(final UserRepository repository) {
+    public Seeder(final UserRepositoryDomainInterface repository) {
 	this.repository = repository;
     }
 

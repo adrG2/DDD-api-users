@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import com.minderest.user.domain.User;
-import com.minderest.user.domain.UserRepository;
+import com.minderest.user.domain.UserRepositoryDomainInterface;
 
 public class SearchUser {
 
-    private UserRepository repository;
+    private UserRepositoryDomainInterface repository;
 
-    public SearchUser(final UserRepository repository) {
+    public SearchUser(final UserRepositoryDomainInterface repository) {
 	this.repository = repository;
     }
 

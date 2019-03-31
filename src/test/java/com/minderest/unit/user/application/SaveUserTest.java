@@ -17,18 +17,18 @@ import com.minderest.user.application.SaveUser;
 import com.minderest.user.domain.IdGenerate;
 import com.minderest.user.domain.PasswordEncoder;
 import com.minderest.user.domain.User;
-import com.minderest.user.domain.UserRepository;
+import com.minderest.user.domain.UserRepositoryDomainInterface;
 import com.minderest.user.domain.exception.UserExistsException;
 import com.minderest.user.domain.exception.UserValidationException;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CreateUserTest {
+public class SaveUserTest {
 
     @InjectMocks
-    private SaveUser createUser;
+    private SaveUser saveUser;
 
     @Mock
-    private UserRepository userRepository;
+    private UserRepositoryDomainInterface userRepository;
 
     @Mock
     private final PasswordEncoder passwordEncoder = mock(PasswordEncoder.class);
@@ -48,7 +48,7 @@ public class CreateUserTest {
 
 	when(idGenerate.generate()).thenReturn("UUID");
 
-	createUser.push(user);
+	saveUser.push(user);
     }
 
     @Test(expected = UserExistsException.class)
@@ -56,13 +56,13 @@ public class CreateUserTest {
 
 	when(userRepository.findByEmail(anyString())).thenReturn(Optional.of(user));
 
-	createUser.push(user);
+	saveUser.push(user);
     }
 
     @Test(expected = UserValidationException.class)
     public void testPushUserNotValid() {
 	User user = mock(User.class);
-	createUser.push(user);
+	saveUser.push(user);
     }
 
 }

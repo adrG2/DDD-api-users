@@ -8,9 +8,9 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 import com.minderest.user.domain.User;
-import com.minderest.user.domain.UserRepository;
+import com.minderest.user.domain.UserRepositoryDomainInterface;
 
-public final class DatabaseMemory implements UserRepository {
+public final class DatabaseMemory implements UserRepositoryDomainInterface {
 
     private final Map<String, User> db = new HashMap<>();
 

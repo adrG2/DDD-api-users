@@ -4,7 +4,7 @@ import com.minderest.user.application.AccessUser;
 import com.minderest.user.application.SaveUser;
 import com.minderest.user.application.SearchUser;
 import com.minderest.user.domain.PasswordEncoder;
-import com.minderest.user.domain.UserRepository;
+import com.minderest.user.domain.UserRepositoryDomainInterface;
 import com.minderest.user.infrastructure.encoder.PasswordSha256;
 import com.minderest.user.infrastructure.idgenerator.Uuid;
 import com.minderest.user.infrastructure.repository.DatabaseMemory;
@@ -28,6 +28,6 @@ public class SpringConfig {
 	return new Seeder(userRepository);
     }
 
-    private final UserRepository userRepository = new DatabaseMemory();
+    private final UserRepositoryDomainInterface userRepository = new DatabaseMemory();
     private final PasswordEncoder passwordEncoder = new PasswordSha256();
 }
