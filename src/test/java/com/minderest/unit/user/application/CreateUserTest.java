@@ -12,20 +12,20 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.minderest.user.UserFields;
-import com.minderest.user.application.CreateUser;
+import com.minderest.unit.util.UserFields;
+import com.minderest.user.application.SaveUser;
+import com.minderest.user.domain.IdGenerate;
+import com.minderest.user.domain.PasswordEncoder;
 import com.minderest.user.domain.User;
+import com.minderest.user.domain.UserRepository;
 import com.minderest.user.domain.exception.UserExistsException;
 import com.minderest.user.domain.exception.UserValidationException;
-import com.minderest.user.domain.port.IdGenerate;
-import com.minderest.user.domain.port.PasswordEncoder;
-import com.minderest.user.domain.port.UserRepository;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CreateUserTest {
 
     @InjectMocks
-    private CreateUser createUser;
+    private SaveUser createUser;
 
     @Mock
     private UserRepository userRepository;

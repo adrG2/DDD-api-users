@@ -3,10 +3,10 @@ package com.minderest.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.minderest.user.adapter.repository.Seeder;
-import com.minderest.user.application.CreateUser;
-import com.minderest.user.application.FindUser;
-import com.minderest.user.application.LoginUser;
+import com.minderest.user.application.AccessUser;
+import com.minderest.user.application.SaveUser;
+import com.minderest.user.application.SearchUser;
+import com.minderest.user.infrastructure.repository.Seeder;
 
 @Configuration
 public class ConfigurationApplication {
@@ -14,22 +14,22 @@ public class ConfigurationApplication {
     private final SpringConfig config = new SpringConfig();
 
     @Bean
-    public FindUser findUser() {
-	return config.findUser();
+    public SearchUser searchUser() {
+	return config.searchUser();
     }
 
     @Bean
-    public CreateUser createUser() {
-	return config.createUser();
+    public SaveUser saveUser() {
+	return config.saveUser();
     }
 
     @Bean
-    public LoginUser loginUser() {
-	return config.loginUser();
+    public AccessUser loginUser() {
+	return config.accessUser();
     }
 
     @Bean
     public Seeder findSeed() {
-	return config.findSeed();
+	return config.getSeed();
     }
 }

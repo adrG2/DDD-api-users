@@ -1,10 +1,10 @@
-package com.minderest.user.adapter.repository;
+package com.minderest.user.infrastructure.repository;
 
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 
 import com.minderest.user.domain.User;
-import com.minderest.user.domain.port.UserRepository;
+import com.minderest.user.domain.UserRepository;
 
 public class Seeder {
 

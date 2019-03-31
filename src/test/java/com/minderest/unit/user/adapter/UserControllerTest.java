@@ -13,13 +13,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.minderest.user.UserFields;
-import com.minderest.user.adapter.controller.UserController;
-import com.minderest.user.adapter.controller.model.UserRest;
-import com.minderest.user.application.CreateUser;
-import com.minderest.user.application.FindUser;
+import com.minderest.unit.util.UserFields;
+import com.minderest.user.application.SaveUser;
+import com.minderest.user.application.SearchUser;
 import com.minderest.user.domain.User;
 import com.minderest.user.domain.exception.UserNotFoundException;
+import com.minderest.user.infrastructure.controller.UserController;
+import com.minderest.user.infrastructure.controller.model.UserRest;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserControllerTest {
@@ -28,10 +28,10 @@ public class UserControllerTest {
     private UserController controller;
 
     @Mock
-    private FindUser findUser;
+    private SearchUser findUser;
 
     @Mock
-    private CreateUser createUser;
+    private SaveUser createUser;
 
     private static final User user = User.builder().id("1").firstName(UserFields.FIRST_NAME)
 	    .lastName(UserFields.LAST_NAME).email(UserFields.EMAIL).nickName(UserFields.NICK_NAME).build();

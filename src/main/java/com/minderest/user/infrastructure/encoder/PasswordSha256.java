@@ -1,8 +1,8 @@
-package com.minderest.user.adapter.encoder;
+package com.minderest.user.infrastructure.encoder;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import com.minderest.user.domain.port.PasswordEncoder;
+import com.minderest.user.domain.PasswordEncoder;
 
 public class PasswordSha256 implements PasswordEncoder {
 

@@ -1,32 +1,33 @@
 package com.minderest.configuration;
 
-import com.minderest.user.adapter.encoder.PasswordSha256;
-import com.minderest.user.adapter.idgenerator.Uuid;
-import com.minderest.user.adapter.repository.DatabaseMemory;
-import com.minderest.user.adapter.repository.Seeder;
-import com.minderest.user.application.CreateUser;
-import com.minderest.user.application.FindUser;
-import com.minderest.user.application.LoginUser;
-import com.minderest.user.domain.port.PasswordEncoder;
-import com.minderest.user.domain.port.UserRepository;
+import com.minderest.user.application.AccessUser;
+import com.minderest.user.application.SaveUser;
+import com.minderest.user.application.SearchUser;
+import com.minderest.user.domain.PasswordEncoder;
+import com.minderest.user.domain.UserRepository;
+import com.minderest.user.infrastructure.encoder.PasswordSha256;
+import com.minderest.user.infrastructure.idgenerator.Uuid;
+import com.minderest.user.infrastructure.repository.DatabaseMemory;
+import com.minderest.user.infrastructure.repository.Seeder;
 
 public class SpringConfig {
-    private final UserRepository userRepository = new DatabaseMemory();
-    private final PasswordEncoder passwordEncoder = new PasswordSha256();
 
-    public CreateUser createUser() {
-	return new CreateUser(userRepository, passwordEncoder, new Uuid());
+    public SaveUser saveUser() {
+	return new SaveUser(userRepository, passwordEncoder, new Uuid());
     }
 
-    public FindUser findUser() {
-	return new FindUser(userRepository);
+    public SearchUser searchUser() {
+	return new SearchUser(userRepository);
     }
 
-    public LoginUser loginUser() {
-	return new LoginUser(userRepository, passwordEncoder);
+    public AccessUser accessUser() {
+	return new AccessUser(userRepository, passwordEncoder);
     }
 
-    public Seeder findSeed() {
+    public Seeder getSeed() {
 	return new Seeder(userRepository);
     }
+
+    private final UserRepository userRepository = new DatabaseMemory();
+    private final PasswordEncoder passwordEncoder = new PasswordSha256();
 }

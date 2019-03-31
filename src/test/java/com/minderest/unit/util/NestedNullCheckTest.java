@@ -1,4 +1,4 @@
-package com.minderest.util;
+package com.minderest.unit.util;
 
 import static org.junit.Assert.assertEquals;
 

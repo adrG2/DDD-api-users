@@ -1,17 +1,17 @@
 package com.minderest.user.application;
 
+import com.minderest.user.domain.IdGenerate;
+import com.minderest.user.domain.PasswordEncoder;
 import com.minderest.user.domain.User;
+import com.minderest.user.domain.UserRepository;
 import com.minderest.user.domain.exception.UserExistsException;
-import com.minderest.user.domain.port.IdGenerate;
-import com.minderest.user.domain.port.PasswordEncoder;
-import com.minderest.user.domain.port.UserRepository;
 
-public class CreateUser {
+public class SaveUser {
     private final UserRepository repository;
     private final PasswordEncoder passwordEncoder;
     private final IdGenerate idGenerate;
 
-    public CreateUser(final UserRepository repository, final PasswordEncoder passwordEncoder,
+    public SaveUser(final UserRepository repository, final PasswordEncoder passwordEncoder,
 	    final IdGenerate idGenerate) {
 	this.repository = repository;
 	this.passwordEncoder = passwordEncoder;

@@ -1,8 +1,8 @@
-package com.minderest.user.adapter.idgenerator;
+package com.minderest.user.infrastructure.idgenerator;
 
 import java.util.UUID;
 
-import com.minderest.user.domain.port.IdGenerate;
+import com.minderest.user.domain.IdGenerate;
 
 public class Uuid implements IdGenerate {
 

@@ -1,4 +1,4 @@
-package com.minderest.user.domain.port;
+package com.minderest.user.domain;
 
 public interface PasswordEncoder {
     String encode(String string);

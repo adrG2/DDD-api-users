@@ -1,18 +1,18 @@
 package com.minderest.user.application;
 
 import com.minderest.shared.util.StringCheck;
-import com.minderest.user.adapter.controller.model.LoginUserRest;
+import com.minderest.user.domain.PasswordEncoder;
 import com.minderest.user.domain.User;
+import com.minderest.user.domain.UserRepository;
 import com.minderest.user.domain.exception.ForbiddenException;
 import com.minderest.user.domain.exception.UserLoginBadParamsException;
-import com.minderest.user.domain.port.PasswordEncoder;
-import com.minderest.user.domain.port.UserRepository;
+import com.minderest.user.infrastructure.controller.model.LoginUserRest;
 
-public class LoginUser {
+public class AccessUser {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public LoginUser(final UserRepository userRepository, final PasswordEncoder passwordEncoder) {
+    public AccessUser(final UserRepository userRepository, final PasswordEncoder passwordEncoder) {
 	this.userRepository = userRepository;
 	this.passwordEncoder = passwordEncoder;
     }

@@ -1,4 +1,4 @@
-package com.minderest.user;
+package com.minderest.unit.util;
 
 import com.minderest.shared.ConstantsErrors;
 

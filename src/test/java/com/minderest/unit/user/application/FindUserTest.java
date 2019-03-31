@@ -15,16 +15,16 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.minderest.user.application.FindUser;
+import com.minderest.user.application.SearchUser;
 import com.minderest.user.domain.User;
+import com.minderest.user.domain.UserRepository;
 import com.minderest.user.domain.exception.UserNotFoundException;
-import com.minderest.user.domain.port.UserRepository;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FindUserTest {
 
     @InjectMocks
-    private FindUser findUser;
+    private SearchUser findUser;
 
     @Mock
     UserRepository userRepository;

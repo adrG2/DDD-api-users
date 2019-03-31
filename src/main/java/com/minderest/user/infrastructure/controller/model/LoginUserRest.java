@@ -1,4 +1,4 @@
-package com.minderest.user.adapter.controller.model;
+package com.minderest.user.infrastructure.controller.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
