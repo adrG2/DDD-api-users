@@ -1,2 +1,2 @@
-# Sample DDD pattern to CRUD Users API
+# Demo DDD pattern - REST Users 
 
