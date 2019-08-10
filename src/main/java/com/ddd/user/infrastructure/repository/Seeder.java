@@ -11,17 +11,24 @@ public class Seeder {
     private UserRepositoryDomainInterface repository;
 
     public Seeder(final UserRepositoryDomainInterface repository) {
-	this.repository = repository;
+        this.repository = repository;
     }
 
     @EventListener
     public void seed(ContextRefreshedEvent event) {
-	seedUsersTable();
+        seedUsersTable();
     }
 
     private void seedUsersTable() {
-	User user = User.builder().id("1").firstName("Antonio").lastName("Fernandez").email("anfer@gmail.com")
-		.nickName("anfer90").password("1234").build();
-	repository.save(user);
+        User user =
+            User.builder()
+                .id("1")
+                .firstName("Antonio")
+                .lastName("Fernandez")
+                .email("anfer@gmail.com")
+                .nickName("anfer90")
+                .password("1234")
+                .build();
+        repository.save(user);
     }
 }

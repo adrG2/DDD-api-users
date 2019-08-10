@@ -6,8 +6,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AccessUserTest {
+
     @Test
     public void testLoginUser() {
-
     }
 }

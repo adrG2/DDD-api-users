@@ -8,7 +8,6 @@ public class PasswordSha256 implements PasswordEncoder {
 
     @Override
     public String encode(String string) {
-	return DigestUtils.sha256Hex(string);
+        return DigestUtils.sha256Hex(string);
     }
-
 }

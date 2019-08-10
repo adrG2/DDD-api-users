@@ -8,7 +8,6 @@ public class Uuid implements IdGenerate {
 
     @Override
     public String generate() {
-	return UUID.randomUUID().toString();
+        return UUID.randomUUID().toString();
     }
-
 }

@@ -15,21 +15,21 @@ public class ConfigurationApplication {
 
     @Bean
     public SearchUser searchUser() {
-	return config.searchUser();
+        return config.searchUser();
     }
 
     @Bean
     public SaveUser saveUser() {
-	return config.saveUser();
+        return config.saveUser();
     }
 
     @Bean
     public AccessUser loginUser() {
-	return config.accessUser();
+        return config.accessUser();
     }
 
     @Bean
     public Seeder findSeed() {
-	return config.getSeed();
+        return config.getSeed();
     }
 }

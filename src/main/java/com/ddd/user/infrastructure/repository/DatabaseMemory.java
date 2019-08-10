@@ -16,26 +16,25 @@ public final class DatabaseMemory implements UserRepositoryDomainInterface {
 
     @Override
     public Optional<User> findById(final String id) {
-	return Optional.ofNullable(db.get(id));
+        return Optional.ofNullable(db.get(id));
     }
 
     @Override
     public void save(final User user) {
-	db.put(user.getId(), user);
+        db.put(user.getId(), user);
     }
 
     @Override
     public Optional<User> findByEmail(final String email) {
-	return db.values().stream().filter(compareEmails(email)).findAny();
+        return db.values().stream().filter(compareEmails(email)).findAny();
     }
 
     private Predicate<? super User> compareEmails(final String email) {
-	return user -> user.getEmail().equals(email);
+        return user -> user.getEmail().equals(email);
     }
 
     @Override
     public List<User> findAllUsers() {
-	return new ArrayList<>(db.values());
+        return new ArrayList<>(db.values());
     }
-
 }

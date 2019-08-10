@@ -9,11 +9,10 @@ import com.ddd.shared.ConstantsErrors;
 public final class StringCheck {
 
     private StringCheck() {
-	throw new AssertionError(ConstantsErrors.NOT_ALLOWED_INSTANTIATE);
+        throw new AssertionError(ConstantsErrors.NOT_ALLOWED_INSTANTIATE);
     }
 
-    public static final boolean isBlankAnyArgument(String... strings) {
-	return Arrays.asList(strings).stream().anyMatch(StringUtils::isBlank);
+    public static boolean isBlankAnyArgument(String... strings) {
+        return Arrays.stream(strings).anyMatch(StringUtils::isBlank);
     }
-
 }

@@ -11,7 +11,7 @@ public final class NestedNullCheck {
 	throw new AssertionError(ConstantsErrors.NOT_ALLOWED_INSTANTIATE);
     }
 
-    public static final <T> Optional<T> resolve(Supplier<T> resolver) {
+	public static <T> Optional<T> resolve(Supplier<T> resolver) {
 	try {
 	    T result = resolver.get();
 	    return Optional.ofNullable(result);

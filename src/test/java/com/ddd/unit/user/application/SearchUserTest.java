@@ -4,21 +4,19 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import com.ddd.user.application.SearchUser;
+import com.ddd.user.domain.User;
+import com.ddd.user.domain.UserRepositoryDomainInterface;
+import com.ddd.user.domain.exception.UserNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-
-import com.ddd.user.application.SearchUser;
-import com.ddd.user.domain.User;
-import com.ddd.user.domain.UserRepositoryDomainInterface;
-import com.ddd.user.domain.exception.UserNotFoundException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SearchUserTest {
@@ -31,22 +29,22 @@ public class SearchUserTest {
 
     @Test
     public void testsearchUser() {
-	when(userRepository.findById(Mockito.anyString())).thenReturn(Optional.of(mock(User.class)));
-	Optional<User> result = searchUser.findById("1");
-	assertNotNull(result);
+        when(userRepository.findById(Mockito.anyString()))
+            .thenReturn(Optional.of(mock(User.class)));
+        Optional<User> result = searchUser.findById("1");
+        assertNotNull(result);
     }
 
     @Test(expected = UserNotFoundException.class)
-    public void testsearchUserNotFoundException() {
-	when(userRepository.findById(Mockito.anyString())).thenThrow(UserNotFoundException.class);
-	searchUser.findById("2");
+    public void testSearchUserNotFoundException() {
+        when(userRepository.findById(Mockito.anyString())).thenThrow(UserNotFoundException.class);
+        searchUser.findById("2");
     }
 
     @Test
-    public void testsearchUsers() {
-	List<User> users = new ArrayList<>();
-	when(userRepository.findAllUsers()).thenReturn(users);
-	searchUser.findAllUsers();
+    public void testSearchUsers() {
+        List<User> users = new ArrayList<>();
+        when(userRepository.findAllUsers()).thenReturn(users);
+        searchUser.findAllUsers();
     }
-
 }

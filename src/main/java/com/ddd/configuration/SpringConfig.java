@@ -12,22 +12,22 @@ import com.ddd.user.infrastructure.repository.Seeder;
 
 public class SpringConfig {
 
-    public SaveUser saveUser() {
-	return new SaveUser(userRepository, passwordEncoder, new Uuid());
-    }
+  public SaveUser saveUser() {
+    return new SaveUser(userRepository, passwordEncoder, new Uuid());
+  }
 
-    public SearchUser searchUser() {
-	return new SearchUser(userRepository);
-    }
+  public SearchUser searchUser() {
+    return new SearchUser(userRepository);
+  }
 
-    public AccessUser accessUser() {
-	return new AccessUser(userRepository, passwordEncoder);
-    }
+  public AccessUser accessUser() {
+    return new AccessUser(userRepository, passwordEncoder);
+  }
 
-    public Seeder getSeed() {
-	return new Seeder(userRepository);
-    }
+  public Seeder getSeed() {
+    return new Seeder(userRepository);
+  }
 
-    private final UserRepositoryDomainInterface userRepository = new DatabaseMemory();
-    private final PasswordEncoder passwordEncoder = new PasswordSha256();
+  private final UserRepositoryDomainInterface userRepository = new DatabaseMemory();
+  private final PasswordEncoder passwordEncoder = new PasswordSha256();
 }

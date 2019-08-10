@@ -27,33 +27,37 @@ public final class Controller {
     private AccessUser accessUser;
 
     @Autowired
-    public Controller(final SearchUser searchUser, final SaveUser createUser, final AccessUser loginUser) {
-	this.searchUser = searchUser;
-	this.saveUser = createUser;
-	this.accessUser = loginUser;
+    public Controller(
+        final SearchUser searchUser, final SaveUser createUser, final AccessUser loginUser) {
+        this.searchUser = searchUser;
+        this.saveUser = createUser;
+        this.accessUser = loginUser;
     }
 
     @GetMapping(value = "/user/{userId}")
     @ResponseBody
     public UserRest getUser(@PathVariable("userId") final String userId) {
-	return UserRest.toUserRest(searchUser.findById(userId).orElseThrow(UserNotFoundException::new));
+        return UserRest
+            .toUserRest(searchUser.findById(userId).orElseThrow(UserNotFoundException::new));
     }
 
     @GetMapping(value = "/users")
     public List<UserRest> getAllUsers() {
-	return searchUser.findAllUsers().stream().map(UserRest::toUserRest).collect(Collectors.toList());
+        return searchUser.findAllUsers().stream()
+            .map(UserRest::toUserRest)
+            .collect(Collectors.toList());
     }
 
     @PostMapping(value = "/user")
     public UserRest createUser(@RequestBody final UserRest userRest) {
-	User user = userRest.toUser();
-	saveUser.push(user);
-	return UserRest.toUserRest(user);
+        User user = userRest.toUser();
+        saveUser.push(user);
+        return UserRest.toUserRest(user);
     }
 
     @PostMapping(value = "/login")
     @ResponseBody
     public UserRest login(@RequestBody final LoginUserRest loginUserRest) {
-	return UserRest.toUserRest(accessUser.login(loginUserRest));
+        return UserRest.toUserRest(accessUser.login(loginUserRest));
     }
 }
