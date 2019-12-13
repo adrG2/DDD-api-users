@@ -36,6 +36,8 @@ public class AccessUser {
 	if (StringCheck.isBlankAnyArgument(email, password)) {
 	    throw new UserLoginBadParamsException();
 	}
+	// TODO Control input param to avoid sql injection 
+	// sanetizeParamas();
     }
 
     private String endocePassword(String email, String password) {
